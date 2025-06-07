@@ -38,6 +38,7 @@ This document establishes consistent formatting standards for creating ASCII-bas
 - **Pin Numbers**: Always inside the frame with bullet point (●)
 - **Special Pins**: Include functional labels in parentheses when relevant
   - Example: `GP28 (ADC2)`, `3V3(OUT)`
+- **Character Alignment**: Maintain exactly 30 characters before each `│` symbol to ensure consistent vertical alignment. This can be exceeded if component names are long, but use standard abbreviations to minimize this.
 
 ### 2. Connection Arrow Standards
 - **Connected Pins**: Use arrows (`---->` or `<----`) to show connections
@@ -54,25 +55,82 @@ This document establishes consistent formatting standards for creating ASCII-bas
     Component Pin  ----> GPIO_PIN │●NN         NN●│ GPIO_PIN                     
 ```
 
-### 4. Power and Ground Conventions
+### 4. Parallel Component Standards
+- **Placement**: Always place parallel components (resistors, capacitors, etc.) immediately below the main connection line
+- **Left Side Format**: Use `connection <-- component -┘` for components on the left side, preceeded by connection (e.g., `GND <-- 10kΩ -┘`)
+- **Right Side Format**: Use `└- component --> connection` for components on the right side, followed by connection (e.g., `└- 10kΩ --> GND`)
+- **Multiple Components**: Each parallel component gets its own line with consistent indentation
+- **Layout Priority**: Circuit clarity takes precedence over maintaining perfect Pico outline - breaks in the frame are acceptable for clear parallel component representation
+
+### 5. Power and Ground Conventions
 - **Power Rail**: Always connect to `3V3(OUT)` pin 36
 - **GND Rail**: Can connect to any GND pin (3, 8, 13, 18, 23, 28, 38)
 - **Notation**: Use "Power Rail" and "GND Rail" terminology consistently
 
-## Component Connections Section Standards
+### 6. Reference Designator Standards
+- **Standard Industry Designators**: Use proper electronic component reference designators
+  - LEDs: D1, D2, D3...
+  - Resistors/Potentiometers: R1, R2, R3...
+  - Motors/Servos: M1, M2, M3...
+  - Switches/Buttons: SW1, SW2, SW3...
+  - Sensors: U1, U2, U3... (or specific like LDR1 for photoresistors)
+- **Pin Naming**: Use underscore format: `D1_R`, `R1_2`, `M1_1`
+- **Descriptive Labels**: Include functional descriptions with designators when space allows
+
+## Response Format Standards
+
+### 1. Component List (First Section)
+Always begin responses with a component confirmation list:
+
+```markdown
+## Component List
+
+To clarify, are these the components you are working with and their pin configurations, correct?
+
+* Component Type (Reference Designator) - Pin Count component (special notes)
+   * REF_PIN - Pin Description
+   * REF_PIN - Pin Description
+```
+
+**Example:**
+```markdown
+* RGB LED (D1) - 4-Pin component (common cathode)
+   * D1_R - Red Anode
+   * D1_G - Green Anode
+   * D1_B - Blue Anode
+   * D1_GND - Common Cathode (GND)
+* Servo Motor (M1) - 3-Pin component
+   * M1_1 - Signal
+   * M1_2 - GND
+   * M1_3 - Power
+```
+
+### 2. ASCII Wiring Diagram (Second Section)
+- Use reference designators and descriptors in the diagram
+- Follow all alignment and parallel component rules
+- Include disclaimer: `*Note: This ASCII diagram shows basic connections - see Component Connections below for complete wiring details*`
+
+### 3. Component Connections Section (Third Section)
+- Use reference designators and descriptive labels consistently
+- Group by component categories (LEDs, Sensors, Actuators, etc.)
+- Include all passive components (resistors, capacitors) with values
+- Specify power requirements and communication protocols
+
+### 4. Code Pin Definitions (Fourth Section)
+- Use descriptive, uppercase constants
+- Group related pins together
+- Follow functional naming conventions
+
+## Component Connection Section Standards
 
 ### Layout Format
 ```markdown
 ## Component Connections
 
 ### Category Name (with specifications)
-- **Component Name**: Specific Pin → GPIO Pin, Additional info
-- **RGB LED**: 
-  - Red Anode → GP3
-  - Green Anode → GP4
-  - Blue Anode → GP5
-  - Common Cathode → GND Rail
-- **LCD with I2C**: VCC → Power Rail, GND → GND Rail, SDA → GP6, SCL → GP7
+- **Component Name (Reference Designator)**: 
+  - REF_PIN Description → GPIO Pin
+  - REF_PIN Description → Rail/Component
 ```
 
 ### Component Categories (in order of appearance)
@@ -84,9 +142,9 @@ This document establishes consistent formatting standards for creating ASCII-bas
 6. **Power Components** (voltage regulators, etc.)
 
 ### Required Information for Each Component
-- **Pin mappings**: Specific GPIO connections
+- **Pin mappings**: Specific GPIO connections using reference designators
 - **Power connections**: Voltage requirements and rail connections
-- **Passive components**: Resistor values, capacitor specs when relevant
+- **Passive components**: Resistor values with clear connections to GND/Power
 - **Communication protocols**: I2C addresses, SPI settings, UART baud rates
 - **Special notes**: Voltage levels, current draw, timing considerations
 
@@ -119,44 +177,19 @@ COMPONENT_FUNCTION = gpio_number
 5. **Communication Pins** (I2C, SPI, UART)
 6. **Special Function Pins** (interrupts, timers)
 
-### Example Code Pin Definitions
-```python
-# LED control pins
-LED1_RED = 0
-LED2_GREEN = 1
-LED3_BLUE = 2
-
-# RGB LED pins
-RGB_RED = 3
-RGB_GREEN = 4  
-RGB_BLUE = 5
-
-# Button input pins
-BUTTON1 = 10
-BUTTON2 = 11
-
-# I2C communication
-I2C_SDA = 6
-I2C_SCL = 7
-
-# ADC inputs
-POT_ADC = 28
-LIGHT_SENSOR_ADC = 27
-```
-
 ## Best Practices for Instructors
 
 ### When Creating Diagrams
-1. **Start with the template**: Always begin with the baseline pinout
-2. **Add connections systematically**: Work from left to right, top to bottom
-3. **Group related components**: Place similar functions near each other
+1. **Start with component confirmation**: Always begin with the component list for verification
+2. **Use reference designators consistently**: Apply throughout all sections
+3. **Prioritize clarity over aesthetics**: Break Pico frame if needed for parallel component clarity
 4. **Verify pin capabilities**: Ensure ADC pins are used for analog, PWM-capable pins for servos
 5. **Check power requirements**: Confirm 3.3V compatibility for all components
 
 ### When Reviewing Student Work
-1. **Check pin assignments**: Verify appropriate pin types are used
-2. **Validate power connections**: Ensure proper voltage levels
-3. **Review component values**: Check resistor calculations and component ratings
+1. **Check component identification**: Verify proper reference designators are used
+2. **Validate pin assignments**: Ensure appropriate pin types are used
+3. **Review parallel components**: Check resistor placements and values
 4. **Test code compatibility**: Ensure pin definitions match physical connections
 
 ### Common Issues to Watch For
@@ -164,7 +197,8 @@ LIGHT_SENSOR_ADC = 27
 - **Current overload**: Too many LEDs without current limiting
 - **Pin conflicts**: Multiple functions assigned to same GPIO
 - **Missing pull resistors**: Floating inputs on buttons/switches
-- **Power distribution**: Inadequate ground connections
+- **Inconsistent reference designators**: Mixed naming conventions
+- **Unclear parallel connections**: Missing or misplaced passive components
 
 ## Template Usage
 
@@ -196,8 +230,10 @@ When students or instructors request help with circuits, the assistant should of
 
 ### Usage Instructions
 When generating any circuit diagram, the assistant should:
-1. Select the appropriate template complexity
-2. Apply all formatting standards from this guide
-3. Include complete Component Connections section
-4. Provide matching Code Pin Definitions
-5. Verify pin assignments follow best practices
+1. Begin with component confirmation list using proper reference designators
+2. Apply all formatting standards from this guide including 30-character alignment
+3. Use parallel component notation for all passive components
+4. Include complete Component Connections section with reference designators
+5. Provide matching Code Pin Definitions
+6. Verify pin assignments follow best practices
+7. Prioritize circuit understanding over diagram aesthetics
