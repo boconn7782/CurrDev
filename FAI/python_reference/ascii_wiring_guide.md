@@ -56,7 +56,7 @@ This document establishes consistent formatting standards for creating ASCII-bas
 ```
 
 ### 4. Parallel Component Standards
-- **Placement**: Always place parallel components (resistors, capacitors, etc.) immediately below the main connection line
+- **Placement**: Always place parallel components (resistors, capacitors, etc.) immediately below the main connection line (on the very next line before proceeding to the next row of PICO connections)
 - **Left Side Format**: Use `connection <-- component -┘` for components on the left side, preceeded by connection (e.g., `GND <-- 10kΩ -┘`)
 - **Right Side Format**: Use `└- component --> connection` for components on the right side, followed by connection (e.g., `└- 10kΩ --> GND`)
 - **Multiple Components**: Each parallel component gets its own line with consistent indentation
