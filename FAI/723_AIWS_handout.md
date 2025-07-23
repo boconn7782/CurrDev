@@ -5,40 +5,6 @@
 
 ---
 
-## **Technical Architecture for Large-Scale VA Projects**
-
-### GitHub Integration Strategy
-**Why GitHub**: Provides controlled access, version control, public dissemination accessible by Claude, and more space than project knowledge limits.
-
-**Version Control for Claude Access**: 
-- Claude sometimes caches older versions of files
-- For testing recent updates, use versioned links: `https://raw.githubusercontent.com/[username]/[repo]/refs/heads/main/[file].md?v=[commit-hash]`
-- **To get the commit hash**: In GitHub, navigate to your file → click "History" → copy the first 7 characters of the latest commit hash
-- Use versioned links when you need Claude to access the most recent version during development
-
-### Chat Efficiency Management
-**Core Challenge**: Students may upload large files, pushing chats to limits before your content even loads.
-
-**Solutions**:
-- **Convert to Markdown**: Work with Claude to produce efficient markdown files instead of PDFs
-- **Minimize Uploads**: Structure content for linking rather than uploading
-- **Tiered Loading Structure**: Organize content so essential guidelines load first, additional detail accessed as needed
-
-### Tiered Content Organization
-**Approach 1 - By Topic**: 
-- Core guidelines (always loaded)
-- Topic-specific modules (linked as needed)
-- Advanced troubleshooting (accessed when required)
-
-**Approach 2 - By Timeline**:
-- Week 1 content (foundational)
-- Week 2 content (building complexity)  
-- Week 3+ content (advanced applications)
-
-**Benefits**: Faster chat loading, better context management, maintains Claude's focus on current needs while keeping additional resources accessible.
-
----
-
 ## **Quick Reference: Development Insights**
 
 ### Start Simple, Build Smart
