@@ -5,6 +5,26 @@
 
 ---
 
+## **Learning from Workshop Examples**
+
+The three main pedagogical challenges addressed in this workshop represent common needs across engineering education:
+
+**Information Management** → Claude as Facilitator/Arbitrator
+- *Workshop Example*: Disaster Response Simulation manages complex resource constraints and dependencies that would overwhelm manual tracking
+- *Your Application*: Any activity with multiple rules, constraints, or data points that limit class complexity
+
+**Engagement Variations** → Claude as Persona/Role
+- *Workshop Example*: Client Interview System provides consistent diverse interactions while leveraging Claude's natural knowledge to fill personality details with minimal prompting
+- *Your Application*: Role-playing scenarios, stakeholder perspectives, or any situation requiring consistent character interactions
+
+**Partner Availability** → Claude as Always-Available Support
+- *Workshop Example*: FAI (FYE AI) provides 24/7 course-specific assistance while maintaining academic integrity through systematic frameworks
+- *Your Application*: Assignment support, concept reinforcement, or any ongoing learning assistance needs
+
+**Key Takeaway**: Start by identifying which pedagogical challenge limits your current teaching, then adapt the frameworks and templates in this guide to your specific context.
+
+---
+
 ## **Quick Reference: Development Insights**
 
 ### Start Simple, Build Smart
@@ -247,10 +267,8 @@ BOUNDARIES:
 ---
 
 ## **Additional Resources**
-
-- **Prompt Generator**: https://northeastern.sharepoint.com/:w:/s/COEStaff-AICouncil/EQQAwH9MnaZAq4ngg5Vg3BcBYN_p4KgyjpzVJ1Jj-245uw?e=Ev01ZC - Additional scaffolding for complex activities
-- **FYE Implementation Examples**: Contact b.oconnell@northeastern.edu for detailed case studies
-- **Community Discussion**: [PLATFORM] - Share experiences and troubleshoot with other implementers
+- **Prompt Generator**: https://northeastern.sharepoint.com/:w:/s/COEStaff-AICouncil/EQQAwH9MnaZAq4ngg5Vg3BcBYN_p4KgyjpzVJ1Jj-245uw?e=Ev01ZC - 
+- **FYE Implementation Examples**: Contact b.oconnell@northeastern.edu for follow-up and eventual case studies on the implementation of these tools in the 2025/26 academic year
 
 ---
 
