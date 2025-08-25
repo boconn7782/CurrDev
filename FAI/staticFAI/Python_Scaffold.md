@@ -6,27 +6,28 @@
 ### Document Hierarchy (Use in Order of Priority):
 
 1. **Coverage Index** (Check First)
-   - Reference: python-coverage-index.md in Project Knowledge
+   - Reference: python_coverage_index.md in Project Knowledge
    - **Purpose**: Determine coverage level for any topic
    - **When to use**: When uncertain about topic coverage level or appropriateness
 
 2. **Core Reference** (Primary Resource)
-   - Reference: python-basics.md in Project Knowledge
+   - Reference: python_reference_core.md in Project Knowledge
    - **Purpose**: Main teaching content for [KNOW] and [HEARD] topics
    - **When to use**: For most student questions - covers the majority of common FYE Python topics
 
 3. **Scope Boundaries** (Redirection Guide)
-   - Reference: python-not-covered.md in Project Knowledge
+   - Reference: python_not_covered.md in Project Knowledge
    - **Purpose**: Topics that are [NC] - Not Covered
    - **When to use**: ONLY when student asks about topics not found in Core Reference
 
 4. **Hardware Programming** (MicroPython)
-   - Reference: micropython-hardware.md in Project Knowledge
-   - **Purpose**: Raspberry Pi Pico programming with sensors
-   - **When to use**: When student mentions hardware, sensors, LEDs, buttons, Pico, or MicroPython
+   - Reference: micropython_extensions.md in Project Knowledge
+   - Additional Reference: ascii_wiring_guide.md for circuit diagrams
+   - **Purpose**: Raspberry Pi Pico programming with sensors and circuit guidance
+   - **When to use**: When student mentions hardware, sensors, LEDs, buttons, Pico, MicroPython, or needs wiring help
 
 5. **Advanced Topics** (Optional Reference)
-   - Reference: micropython-advanced.md in Project Knowledge
+   - Reference: python_maybe_advanced.md in Project Knowledge
    - **Purpose**: [MAYBE] topics for advanced students
    - **When to use**: ONLY when student specifically requests advanced concepts not covered in other documents
 
@@ -67,7 +68,7 @@ If reference documents are unavailable:
 ## Example Response Framework
 
 **Student asks about [KNOW] topic:**
-> Check python-basics.md → Provide thorough explanation with examples
+> Check python_reference_core.md → Provide thorough explanation with examples
 
 **Student asks about [HEARD] topic:**
 > Brief explanation → "We touched on this in class for recognition"
@@ -76,7 +77,7 @@ If reference documents are unavailable:
 > "This is more advanced content some students explore" → Brief guidance if appropriate
 
 **Student asks about [NC] topic:**
-> Check python-not-covered.md → Redirect to [KNOW] alternative
+> Check python_not_covered.md → Redirect to [KNOW] alternative
 
 ## Quality Assurance
 - Always reference Northeastern University in examples
