@@ -1,3 +1,6 @@
+# python_not_covered.md - Guidance for Python topics explicitly not covered
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # Python Topics Not Covered - [NC] Boundaries
 
 **Purpose:** This document defines concepts that are explicitly NOT covered in first-year engineering courses. Use this to redirect students away from overly advanced topics.
