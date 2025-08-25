@@ -290,9 +290,7 @@ import pytorch
 
 ---
 
-## **CONTENT GAPS TO COMPLETE:**
-
-1. **[INSTRUCTOR VERIFICATION]** - Confirm which advanced topics students commonly encounter online
-2. **[MISSING]** - More redirection examples for common advanced questions
-3. **[REVIEW NEEDED]** - Verify alignment with what's actually taught in different course sections
-4. **[ADD]** - Common misconceptions students have about "better" or "more advanced" ways to code
+## **DEVELOPMENT GAPS:**
+Content/guidance we are aware of that needs to be added or further developed:
+1. **[MISSING]** - More redirection examples for common advanced questions
+2. **[ADD]** - Common misconceptions students have about "better" or "more advanced" ways to code
