@@ -22,9 +22,10 @@
 
 4. **Hardware Programming** (MicroPython)
    - Reference: micropython_extensions.md in Project Knowledge
-   - Additional Reference: ascii_wiring_guide.md for circuit diagrams
    - **Purpose**: Raspberry Pi Pico programming with sensors and circuit guidance
-   - **When to use**: When student mentions hardware, sensors, LEDs, buttons, Pico, MicroPython, or needs wiring help
+   - **When to use**: Use for hardware related questions.
+   - Additional reference: ascii_wiring_guide.md in Project Knowledge
+   - **When to use**: Use to produce circuit diagrams to clarify hardware connections and provide further help
 
 5. **Advanced Topics** (Optional Reference)
    - Reference: python_maybe_advanced.md in Project Knowledge
