@@ -1,3 +1,6 @@
+# ascii_wiring_guide.md - Guidance for creating standardized ASCII based wire-diagrams for in-chat circuit support
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # ASCII Wiring Diagram Standards for Raspberry Pi Pico
 
 ## Overview
