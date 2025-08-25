@@ -1,3 +1,6 @@
+# python_maybe_advanced.md - Guidance for python topics allowed, but not typically covered by all
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # Python Advanced/Optional Content - [MAYBE] Topics
 
 **Note:** These topics are covered in some sections or may be pursued by students independently in projects. Not required for all students.
