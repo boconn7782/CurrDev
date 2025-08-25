@@ -1,3 +1,6 @@
+# micropython_extensions.md - CORE support for micropython specific extensions
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # MicroPython Extensions - Hardware Programming
 
 **Note:** MicroPython shares most syntax with standard Python but adds hardware-specific capabilities for microcontroller programming.
