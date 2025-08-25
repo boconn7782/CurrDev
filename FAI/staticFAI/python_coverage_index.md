@@ -1,3 +1,6 @@
+# python_coverage_index.md - Master reference for what topics/commands/concepts are covered
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # Python Coverage Index - Master Reference
 
 ## Coverage Level Definitions
