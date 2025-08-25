@@ -1,4 +1,4 @@
-# Python_Scaffold.md - CORE 
+# Python_Scaffold.md - CORE Knowledge Hub for Python/Micropython Content
 # [SYSTEM FILE - DO NOT REMOVE]
 
 ## Python Reference Documentation
