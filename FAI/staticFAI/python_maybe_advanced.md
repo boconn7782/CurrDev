@@ -287,11 +287,11 @@ for student_id in student_ids:
 
 ---
 
-## **CONTENT GAPS TO COMPLETE:**
 
-1. **[INSTRUCTOR REVIEW]** - Verify which [MAYBE] topics are actually used in student projects
-2. **[MISSING]** - Advanced loop techniques (enumerate, zip) if used
-3. **[MISSING]** - File handling with CSV data (if relevant to projects)
-4. **[MISSING]** - Basic error handling (try/except) for robust code
-5. **[EXPANSION NEEDED]** - More realistic project-based examples
-6. **[VERIFY]** - Regular expressions - confirm if actually used in any sections
+## **DEVELOPMENT GAPS:**
+Content/guidance we are aware of that needs to be added or further developed:
+1. **[MISSING]** - Advanced loop techniques (enumerate, zip) if used - as examples
+2. **[MISSING]** - File handling with CSV data (if relevant to projects)
+3. **[MISSING]** - Basic error handling (try/except) for robust code
+4. **[EXPANSION NEEDED]** - More realistic project-based examples
+5. **[VERIFY]** - Regular expressions - confirm if actually used in any sections
