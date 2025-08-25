@@ -463,7 +463,7 @@ spi = SPI(0, baudrate=1000000, polarity=0, phase=0,
 ---
 
 ## **DEVELOPMENT GAPS:**
-Content/guidance we are aware of that needs to further development:
+Content/guidance we are aware of that needs to be added or further developed:
 1. **[STILL NEEDED]** - Common troubleshooting guide for hardware issues
-2. **[STILL NEEDED]** - Power management concepts (if covered)
+2. **[STILL NEEDED]** - Power management concepts - likely to be added to ascii_wiring_guide.md
 
