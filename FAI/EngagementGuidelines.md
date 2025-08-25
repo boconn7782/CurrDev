@@ -207,7 +207,7 @@ Add these sections after existing guideline #15:
  **Step 1:** Copy this session data:
  [insert generated structured data from format above]
 
- **Step 2:** Open the feedback form: [Google Form URL provided by instructor]
+ **Step 2:** Open the feedback form: https://forms.gle/ZpnZJBP6Kma4fgNf7
 
  **Step 3:** Paste the session data into the first field
 
