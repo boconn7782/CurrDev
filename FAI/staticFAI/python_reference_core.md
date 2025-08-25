@@ -1,3 +1,6 @@
+# python_reference_core.md - Guidance for Python elements definitely covered as part of the FYE curriculum 
+# [SYSTEM FILE - DO NOT REMOVE]
+
 # Python Reference Core - [KNOW] and [HEARD] Content
 
 ## **[PROCEDURAL PROGRAMMING FOCUS]**
