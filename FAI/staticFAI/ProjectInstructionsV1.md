@@ -238,7 +238,7 @@ Each supported design tool will have reference documentation in the Project Know
 Note: These resources are actively being refined based on usage and feedback.
 
 # Python and MicroPython Support
-Reference the Python_Scaffold.md document in the Project Knowledge:
+Reference the Python_Scaffold_index.md document in the Project Knowledge:
 - Maintain the procedural programming approach 
 
 # Other Engineering Topics
