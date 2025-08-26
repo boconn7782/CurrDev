@@ -1,4 +1,4 @@
-# python_reference_core.md - Guidance for Python elements definitely covered as part of the FYE curriculum 
+# python_reference_core.md - Core support for [KNOW] and [HEARD] content
 # [SYSTEM FILE - DO NOT REMOVE]
 
 # Python Reference Core - [KNOW] and [HEARD] Content
@@ -88,16 +88,14 @@ grades.append(87)              # Add item
 print(len(grades))             # Get length
 ```
 
-## Tuples [HEARD] 
+## Dictionaries [HEARD]
 ```python
-departments = ("ENGR", "MATH", "COMP")  # Ordered, unchangeable
-# departments[0] = "PHYS"  # This would cause an error
-```
-
-## Sets [HEARD]
-```python
-majors = {"Engineering", "Math", "CS"}  # Unordered, unique values only
-print(majors)  # Duplicates automatically removed
+student = {
+    "name": "Alex",
+    "id": "NU123456", 
+    "credits": 15
+}
+print(student["name"])  # Access by key
 ```
 
 ---
@@ -124,16 +122,6 @@ is_enrolled = True
 completed = False
 if is_enrolled and not completed:
     print("Currently taking course")
-```
-
-## Dictionaries [HEARD]
-```python
-student = {
-    "name": "Alex",
-    "id": "NU123456", 
-    "credits": 15
-}
-print(student["name"])  # Access by key
 ```
 
 ---
@@ -295,6 +283,19 @@ import math
 print(f"Square root: {math.sqrt(16)}")  # 4.0
 ```
 
+## Math with Division [KNOW]
+```python
+# divmod() returns both quotient and remainder
+total_minutes = 625  # Total study time in minutes
+hours, minutes = divmod(total_minutes, 60)
+print(f"Study time: {hours} hours and {minutes} minutes")
+
+# Compare with regular division
+print(f"Regular division: {625 / 60}")  # 10.416666...
+print(f"Floor division: {625 // 60}")   # 10
+print(f"Remainder: {625 % 60}")         # 25
+```
+
 ## Heard Functions [HEARD]
 ```python
 print(abs(-15))        # Absolute value: 15
@@ -306,17 +307,50 @@ print(sum([1,2,3,4]))  # Sum: 10
 
 # String Methods [KNOW]
 
-## Essential String Operations [KNOW]
+## Core String Operations [KNOW]
 ```python
 response = "  Go Huskies!  "
 cleaned = response.strip()           # Remove whitespace
 upper = cleaned.upper()              # "GO HUSKIES!"
+lower = cleaned.lower()              # "go huskies!"
 count = upper.count("HUSKIES")       # Count occurrences
 length = len(upper)                  # String length
 
 # Formatted strings
 name = "Alex"
 message = f"Welcome, {name}!"        # f-string formatting
+```
+
+## Essential Text Processing [KNOW]
+```python
+# Clean and standardize student input
+student_response = "  northeastern university  "
+clean_response = student_response.strip().title()  # "Northeastern University"
+print(clean_response)
+
+# Case conversion for data consistency
+course_code = "engr101"
+standardized = course_code.upper()    # "ENGR101"
+print(f"Course: {standardized}")
+```
+
+---
+
+# Escape Characters [KNOW]
+
+## Newline and Tab [KNOW]
+```python
+# Newline character for line breaks
+print("Welcome to Northeastern!\nGo Huskies!")
+
+# Tab character for formatting
+print("Course\tGrade\tCredits")
+print("ENGR101\t85\t4")
+print("MATH102\t92\t4")
+
+# Multi-line string formatting
+course_info = "Course: ENGR101\nInstructor: Dr. Smith\nCredits: 4"
+print(course_info)
 ```
 
 ---
@@ -378,88 +412,10 @@ age = int(input("Enter age: "))     # Convert input to integer
 
 ---
 
-# Boolean Functions [HEARD]
-
-## any() and all() [HEARD]
-```python
-# **[ADDED BY AI - REVIEW]** - Check if all students passed
-student_grades = [85, 92, 78, 88, 91]
-passing_grades = [grade >= 70 for grade in student_grades]
-
-if all(passing_grades):
-    print("All students in ENGR101 passed!")
-else:
-    print("Some students need additional support")
-
-# Check if any student got an A  
-a_grades = [grade >= 90 for grade in student_grades]
-if any(a_grades):
-    print("At least one student earned an A in the course")
-```
-
----
-
-# Useful Loop Functions [KNOW]
-
-## range() Function [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - Northeastern building floors
-print("Snell Library floors:")
-for floor in range(1, 9):  # Floors 1-8
-    print(f"Floor {floor}")
-    
-# Count down to Northeastern hockey game
-for minutes in range(10, 0, -1):  # Count backwards
-    print(f"{minutes} minutes until puck drop!")
-print("Go Huskies!")
-```
-
-## len() Function [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - Count engineering courses
-engr_courses = ["ENGR1201", "ENGR1202", "ENGR2350", "ENGR3000"]
-total_courses = len(engr_courses)
-print(f"Total engineering courses: {total_courses}")
-
-# Check input length
-student_id = input("Enter your Northeastern ID: ")
-if len(student_id) == 9:  # Standard NU ID length
-    print("Valid ID format")
-else:
-    print("ID should be 9 characters long")
-```
-
----
-
-# Input Validation Basics [KNOW]
-
-## Simple Input Checking [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - Validate numeric input
-def get_valid_grade():
-    while True:
-        grade_input = input("Enter your ENGR101 exam grade (0-100): ")
-        if grade_input.isdigit():
-            grade = int(grade_input)
-            if 0 <= grade <= 100:
-                return grade
-            else:
-                print("Grade must be between 0 and 100")
-        else:
-            print("Please enter a number")
-
-# Use the function
-student_grade = get_valid_grade()
-print(f"You entered: {student_grade}")
-```
-
----
-
 # Random Module [KNOW]
 
 ## Basic Random Operations [KNOW]
 ```python
-# **[ADDED BY AI - REVIEW]** - Random selection for engineering teams
 import random
 
 # Pick random students for project teams
@@ -476,10 +432,38 @@ for trial in range(3):
 presentation_order = students.copy()
 random.shuffle(presentation_order)
 print(f"Presentation order: {presentation_order}")
+
+# Random integers for dice/game simulations
+dice_roll = random.randint(1, 6)
+print(f"Dice roll: {dice_roll}")
 ```
 
 ---
 
-## **DEVELOPMENT GAPS:**
-Content/guidance we are aware of that needs to be added or further developed:
-1. **[NOTE]** - Mathematical functions verified - most basic ones are built-in, math module needed for advanced functions. Need to fully define which advanced functions are commonly used.
+# Useful Loop Functions [KNOW]
+
+## range() Function [KNOW]
+```python
+print("Snell Library floors:")
+for floor in range(1, 9):  # Floors 1-8
+    print(f"Floor {floor}")
+    
+# Count down to Northeastern hockey game
+for minutes in range(10, 0, -1):  # Count backwards
+    print(f"{minutes} minutes until puck drop!")
+print("Go Huskies!")
+```
+
+## len() Function [KNOW]
+```python
+engr_courses = ["ENGR1201", "ENGR1202", "ENGR2350", "ENGR3000"]
+total_courses = len(engr_courses)
+print(f"Total engineering courses: {total_courses}")
+
+# Check input length
+student_id = input("Enter your Northeastern ID: ")
+if len(student_id) == 9:  # Standard NU ID length
+    print("Valid ID format")
+else:
+    print("ID should be 9 characters long")
+```
