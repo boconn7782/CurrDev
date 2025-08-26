@@ -166,6 +166,79 @@ while True:
 
 ---
 
+# Servo Motor Control [KNOW]
+
+## Basic Servo Operations [KNOW]
+```python
+from machine import Pin, PWM
+import time
+
+# Create PWM servo controller on pin 16
+servo = PWM(Pin(16))
+servo.freq(50)  # 50Hz frequency for servo control
+
+def set_servo_angle(angle):
+    """Set servo to specific angle (0-180 degrees)"""
+    # Convert angle to duty cycle
+    # Servo expects 1-2ms pulse width (1000-2000 microseconds)
+    if 0 <= angle <= 180:
+        duty = int((angle / 180) * 1000 + 1000)
+        servo.duty_us(duty)
+    else:
+        print("Angle must be between 0 and 180 degrees")
+
+# Example: Servo sweep demonstration
+print("Northeastern engineering servo demo starting...")
+
+while True:
+    print("Sweeping left to right...")
+    for angle in range(0, 181, 15):
+        set_servo_angle(angle)
+        print(f"Servo at {angle} degrees")
+        time.sleep(0.2)
+    
+    print("Sweeping right to left...")
+    for angle in range(180, -1, -15):
+        set_servo_angle(angle)
+        print(f"Servo at {angle} degrees")
+        time.sleep(0.2)
+```
+
+## Advanced Servo Control [KNOW]
+```python
+from machine import Pin, PWM, ADC
+import time
+
+# Setup servo and potentiometer for manual control
+servo = PWM(Pin(16))
+servo.freq(50)
+pot = ADC(Pin(26))  # Potentiometer for manual control
+
+def set_servo_angle(angle):
+    """Convert angle to appropriate duty cycle"""
+    if 0 <= angle <= 180:
+        duty = int((angle / 180) * 1000 + 1000)
+        servo.duty_us(duty)
+    return angle
+
+print("Manual servo control - turn potentiometer to control servo")
+
+while True:
+    # Read potentiometer (0-65535)
+    pot_reading = pot.read_u16()
+    
+    # Convert to servo angle (0-180 degrees)
+    angle = (pot_reading / 65535) * 180
+    
+    # Set servo position
+    actual_angle = set_servo_angle(angle)
+    print(f"Potentiometer: {pot_reading}, Servo angle: {actual_angle:.1f}°")
+    
+    time.sleep(0.1)  # Small delay for smooth operation
+```
+
+---
+
 # Time Functions [KNOW]
 
 ## Essential Timing
@@ -229,7 +302,6 @@ while True:
 
 ## Analog Sensors: Photoresistor and Thermistor [KNOW]
 ```python
-# **[ADDED BY AI - REVIEW]** - Multiple analog sensor reading
 from machine import Pin, ADC
 import time
 
@@ -253,7 +325,7 @@ def read_temperature():
     temp_c = (voltage - 0.5) * 100  # Simplified linear approximation
     return temp_c
 
-# **[ADDED BY AI - REVIEW]** - Northeastern weather station
+# Northeastern weather station example
 print("Northeastern Campus Weather Monitor")
 print("Monitoring conditions near Snell Library...")
 
@@ -275,163 +347,11 @@ while True:
     time.sleep(2)
 ```
 
-## Serial Communication and Monitoring [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - Serial data logging for engineering projects
-from machine import Pin, ADC
-import time
-
-# Setup for data collection
-sensor = ADC(Pin(26))
-led = Pin(25, Pin.OUT)
-
-def log_sensor_data():
-    """Log sensor data in format suitable for MATLAB import"""
-    timestamp = time.ticks_ms()
-    sensor_value = sensor.read_u16()
-    voltage = sensor_value * 3.3 / 65535
-    
-    # Print in CSV format for easy data analysis
-    print(f"{timestamp},{sensor_value},{voltage:.3f}")
-    
-    return voltage
-
-# **[ADDED BY AI - REVIEW]** - Data collection for ENGR project
-print("Northeastern Engineering Data Logger")
-print("Time(ms),Raw_Value,Voltage(V)")  # CSV header for MATLAB
-
-# Collect data for 30 seconds
-start_time = time.ticks_ms()
-sample_count = 0
-
-while time.ticks_diff(time.ticks_ms(), start_time) < 30000:  # 30 seconds
-    voltage = log_sensor_data()
-    
-    # Blink LED to show data collection active
-    led.toggle()
-    
-    sample_count += 1
-    time.sleep(0.1)  # 10 samples per second
-
-print(f"# Data collection complete: {sample_count} samples")
-led.off()
-```
-
----
-
-# Advanced Hardware Topics [MAYBE]
-
-## Servo Motor Control [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - Complete servo control example
-from machine import Pin, PWM
-import time
-
-# Create PWM servo controller on pin 16
-servo = PWM(Pin(16))
-servo.freq(50)  # 50Hz frequency for servo control
-
-def set_servo_angle(angle):
-    """Set servo to specific angle (0-180 degrees)"""
-    # Convert angle to duty cycle
-    # Servo expects 1-2ms pulse width (1000-2000 microseconds)
-    if 0 <= angle <= 180:
-        duty = int((angle / 180) * 1000 + 1000)
-        servo.duty_us(duty)
-    else:
-        print("Angle must be between 0 and 180 degrees")
-
-# **[ADDED BY AI - REVIEW]** - Northeastern-themed servo example
-print("Northeastern Husky head tracker starting...")
-
-# Sweep servo like a husky watching a hockey puck
-while True:
-    print("Tracking puck left to right...")
-    for angle in range(0, 181, 15):
-        set_servo_angle(angle)
-        print(f"Husky looking at {angle} degrees")
-        time.sleep(0.2)
-    
-    print("Tracking puck right to left...")
-    for angle in range(180, -1, -15):
-        set_servo_angle(angle)
-        print(f"Husky looking at {angle} degrees")
-        time.sleep(0.2)
-```
-
-## Ultrasonic Distance Sensor [KNOW]
-```python
-# **[ADDED BY AI - REVIEW]** - HC-SR04 ultrasonic sensor
-from machine import Pin
-import time
-
-# Setup ultrasonic sensor pins
-trigger = Pin(2, Pin.OUT)
-echo = Pin(3, Pin.IN)
-
-def measure_distance():
-    """Measure distance in centimeters using ultrasonic sensor"""
-    # Send trigger pulse
-    trigger.off()
-    time.sleep_us(2)
-    trigger.on()
-    time.sleep_us(10)
-    trigger.off()
-    
-    # Wait for echo
-    while echo.value() == 0:
-        pulse_start = time.ticks_us()
-    while echo.value() == 1:
-        pulse_end = time.ticks_us()
-    
-    # Calculate distance
-    pulse_duration = time.ticks_diff(pulse_end, pulse_start)
-    distance = (pulse_duration * 0.034) / 2  # Speed of sound conversion
-    return distance
-
-# **[ADDED BY AI - REVIEW]** - Northeastern campus distance measuring
-led = Pin(25, Pin.OUT)  # Warning LED
-
-print("Northeastern campus distance monitor")
-while True:
-    dist = measure_distance()
-    print(f"Distance to object: {dist:.1f} cm")
-    
-    # Light LED if object too close (like approaching Matthews Arena)
-    if dist < 20:
-        led.on()
-        print("Warning: Object very close!")
-    else:
-        led.off()
-    
-    time.sleep(0.5)
-```
-
-## Random Numbers [MAYBE]
-```python
-import random
-
-# Generate random LED patterns
-from machine import Pin
-import time
-
-leds = [Pin(i, Pin.OUT) for i in [15, 16, 17]]
-
-while True:
-    # Pick random LED
-    led_index = random.randint(0, 2)
-    leds[led_index].toggle()
-    
-    # Random delay
-    delay = random.uniform(0.1, 1.0)
-    time.sleep(delay)
-```
-
 ---
 
 # Communication Protocols [MAYBE]
 
-## I2C Communication
+## I2C Communication [MAYBE]
 ```python
 from machine import Pin, I2C
 
@@ -447,7 +367,7 @@ print(f"I2C devices found: {devices}")
 # data = i2c.readfrom(address, num_bytes)
 ```
 
-## SPI Communication  
+## SPI Communication [MAYBE]
 ```python
 from machine import Pin, SPI
 
@@ -459,11 +379,3 @@ spi = SPI(0, baudrate=1000000, polarity=0, phase=0,
 # spi.write(data)
 # response = spi.read(num_bytes)
 ```
-
----
-
-## **DEVELOPMENT GAPS:**
-Content/guidance we are aware of that needs to be added or further developed:
-1. **[STILL NEEDED]** - Common troubleshooting guide for hardware issues
-2. **[STILL NEEDED]** - Power management concepts - likely to be added to ascii_wiring_guide.md
-
